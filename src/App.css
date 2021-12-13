@@ -1,0 +1,19 @@
+body{
+    background-color: antiquewhite;
+}
+
+
+#Nav{
+display:flex;
+justify-content:center;
+/* flex-direction: column; */
+font-size: x-large;
+align-items: center;
+height: 10vh;
+background-color: rgba(161, 159, 159, 0.11);
+color: white;
+padding: 0 10rem;
+position: relative;
+margin-top: 30px;
+margin:auto ;
+}
