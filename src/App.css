@@ -1,19 +1,50 @@
 body{
-    background-color: antiquewhite;
+ background-image:url("https://ae01.alicdn.com/kf/HTB1w4G2pKGSBuNjSspbq6AiipXa0/7x5FT.jpg_Q90.jpg_.webp");
+
 }
 
 
 #Nav{
 display:flex;
 justify-content:center;
-/* flex-direction: column; */
 font-size: x-large;
 align-items: center;
 height: 10vh;
-background-color: rgba(161, 159, 159, 0.11);
-color: white;
-padding: 0 10rem;
-position: relative;
-margin-top: 30px;
+background-color: rgba(161, 159, 159, 0.219);
+padding: 20px;
+margin-top: 300px;
 margin:auto ;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  
+  }
+  
+  li {
+    
+ float: left;
+  }
+  .a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+.b{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;  
+}
+.sinUp {
+    border-style: inset;
+    background-color: rgba(219, 193, 161, 0.295);
+    margin: 300px;
+
 }

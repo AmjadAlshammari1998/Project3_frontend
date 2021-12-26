@@ -42,7 +42,7 @@ export default function SignUp() {
 }
     
     return (
-        <div>
+        <div className="sinUp">
            <input onChange={(e)=>{
                changeName(e);
            }}placeholder="enter Name" /> 

@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-export default function LogIn() {
+export default function LogIn({setToken}) {
 const history = useHistory()
 const [account, setAccount] = useState()
 const [password, setPassword] = useState()
@@ -15,16 +15,21 @@ const passwordInput=(e)=>{
     setPassword(e.target.value) 
 }
 
-const logInBtn = async()=>{
-    const response = await axios.post("http://localhost:5000/logIn",{
-    account:account,
-    password:password,
 
-    })
-    if(response.status=== 201){
-        history.push("/Home")
-    }
-}
+
+    const logInBtn = async () => {
+        try {
+          const res = await axios.post("http://localhost:5000/logIn", {
+            account:account,
+            password:password,
+          });
+          console.log(res.data);
+          setToken(res.data.token);
+          history.push("/Home");
+        } catch (err) {
+          console.log("errrrrror");
+        }
+      };
     return (
         <div>
           <input type="text" placeholder="UserName" onChange={accountInput} />
