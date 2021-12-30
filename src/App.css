@@ -48,3 +48,22 @@ ul {
     margin: 300px;
 
 }
+/* .nav{
+  justify-self: start;
+} */
+
+.profile-img{
+width:10%;
+height:10%;
+}
+.account-post{
+width: 100px;
+height: 100px;
+}
+.box-home{
+  width: 100px;
+  height: 100px;
+}
+.job1{
+
+}

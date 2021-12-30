@@ -46,19 +46,23 @@ export default function SignUp() {
            <input onChange={(e)=>{
                changeName(e);
            }}placeholder="enter Name" /> 
-
+            <br></br>
            <input onChange={(e)=>{
                changeEmile(e);
            }} placeholder="enter Emile"/>
+           <br></br>
             <input onChange={(e)=>{
                 chagedescription(e);
             }}placeholder="enter description" />
+            <br></br>
             <input onChange={(e)=>{
                 changeimg(e)
             }} placeholder="Enter Img Profile"/>
+            <br></br>
             <input onChange={(e)=>{
                 changPassword(e)
             }}placeholder ="Enter Password" />
+            <br></br>
            <button onClick={()=>{
                addUser();
              

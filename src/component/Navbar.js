@@ -14,6 +14,9 @@ export default function Navbar({token ,setToken}) {
           <Link to="/Home">Home <img src="iqon.pjg" alt="" /></Link>
           </li>
           <li className='a'>
+            <Link to="/Job">Job</Link>
+          </li>
+          <li className='a'>
           <Link to="/Account">Account</Link>
           </li>
           <li  className='a'>
@@ -32,8 +35,12 @@ export default function Navbar({token ,setToken}) {
           <li className='b'>
           <Link to ="/login">login</Link>
           </li>
+        
           <li className='b'>
           <Link to="/SignUp" >SignUp</Link> 
+          </li>
+          <li className='b'>
+          <Link to="/HiBage" >HiBage</Link> 
           </li>
         </ul>
       )}  
