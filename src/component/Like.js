@@ -5,7 +5,7 @@ export default function Like({token}) {
 
     useEffect(() => {
         const getFav = async()=>{
-            const response = await axios.get("http://localhost:5000/allFavorite",{
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allFavorite`,{
                 headers: {
                     authorization: `Bearer ${token}`,
                   }  

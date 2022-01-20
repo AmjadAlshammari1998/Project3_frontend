@@ -1,6 +1,7 @@
 import React, {useState}from "react";
 import {useHistory} from "react-router-dom";
 import axios from 'axios';
+import "./SignUp.css";
 
 export default function SignUp() {
     const history = useHistory()
@@ -29,7 +30,7 @@ export default function SignUp() {
         setPassword(e.target.value)
     }
    const addUser =async() =>{
-    const response =await axios.post("http://localhost:5000/signUp",{
+    const response =await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signUp`,{
         account:account,
         email:emile,
         description:description,
@@ -42,31 +43,37 @@ export default function SignUp() {
 }
     
     return (
+        <div id="sinLog">
+        <div className="sinUp1">
+          <div className="imgSinUp">  </div>
         <div className="sinUp">
-           <input onChange={(e)=>{
+           <input id="firstSignupInput" className="input" onChange={(e)=>{
                changeName(e);
            }}placeholder="enter Name" /> 
             <br></br>
-           <input onChange={(e)=>{
+           <input className="input" onChange={(e)=>{
                changeEmile(e);
            }} placeholder="enter Emile"/>
            <br></br>
-            <input onChange={(e)=>{
+            <input className="input" onChange={(e)=>{
                 chagedescription(e);
             }}placeholder="enter description" />
             <br></br>
-            <input onChange={(e)=>{
+            <input className="input" onChange={(e)=>{
                 changeimg(e)
             }} placeholder="Enter Img Profile"/>
             <br></br>
-            <input onChange={(e)=>{
+            <input className="input" onChange={(e)=>{
                 changPassword(e)
             }}placeholder ="Enter Password" />
             <br></br>
-           <button onClick={()=>{
+           <button className="button" onClick={()=>{
                addUser();
              
            }}>signUp</button>
+           
+        </div>
+        </div>
         </div>
     )
 }

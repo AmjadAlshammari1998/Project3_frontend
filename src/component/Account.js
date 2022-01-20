@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 // import Navbar from './Navbar';
-// import "./App.css";
+import "./Account.css";
 
 
 
@@ -12,7 +12,7 @@ export default function Account({token}) {
     
     useEffect(() => {
         const getProfileData = async()=>{
-            const result = await axios.get(`http://localhost:5000/profiles`);
+            const result = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/profiles`);
             setProfileInfo(result.data)
         }
 
@@ -27,18 +27,18 @@ export default function Account({token}) {
             <div className="account-container">
                 {
                     profileInfo.map((elem,index)=>{
-                        return <div key={index}>
+                        return <div className='divv' key={index}>
+                            <div >
                             <img className="profile-img" src={elem.imageProfile} />
                             <h3>{elem.account}</h3>
                             <p>{elem.description}</p>
+                            </div>
                             <div>
-                                <br />
-                                <h4 className="liked">Liked :</h4>
-                                <hr />
+                                <h4 className="liked"> Liked Post :</h4>
                                 <p>{elem.favorite.map((elem,index)=>{
                                     return <div key={index}>
-                                        <p className="text-profile">Ammmmmjaadd{elem.text}</p>
-                                        <hr/>
+                                        <p className="text-profile">{elem.text}</p>
+                                   
                                     </div>
                                 })}</p>
                             </div>

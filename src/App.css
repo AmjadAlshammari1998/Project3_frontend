@@ -1,5 +1,5 @@
 body{
- background-image:url("https://ae01.alicdn.com/kf/HTB1w4G2pKGSBuNjSspbq6AiipXa0/7x5FT.jpg_Q90.jpg_.webp");
+ background-color: rgba(232, 234, 243, 0.397);
 
 }
 
@@ -10,11 +10,17 @@ justify-content:center;
 font-size: x-large;
 align-items: center;
 height: 10vh;
-background-color: rgba(161, 159, 159, 0.219);
+background-color: rgba(161, 159, 159, 0.377);
 padding: 20px;
 margin-top: 300px;
 margin:auto ;
+border-radius: 43px 43px 43px 43px;
+-webkit-border-radius: 43px 43px 43px 43px;
+-moz-border-radius: 43px 43px 43px 43px;
+background: rgba(46,55,59,0.3);
+
 }
+
 
 ul {
     list-style-type: none;
@@ -27,6 +33,7 @@ ul {
   li {
     
  float: left;
+ margin: 63px;
   }
   .a {
     display: block;
@@ -42,10 +49,25 @@ ul {
     padding: 14px 16px;
     text-decoration: none;  
 }
-.sinUp {
-    border-style: inset;
-    background-color: rgba(219, 193, 161, 0.295);
-    margin: 300px;
+
+
+.button{
+  width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background-color: rgba(50, 81, 139, 0.575);
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+
 
 }
 /* .nav{
@@ -64,6 +86,10 @@ height: 100px;
   width: 100px;
   height: 100px;
 }
-.job1{
+text-post{
 
+}
+.imgjob{
+  width:10%;
+  height:10%; 
 }

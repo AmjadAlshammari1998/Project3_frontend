@@ -1,9 +1,13 @@
 
 import React from 'react'
 import { Link } from "react-router-dom";
-
+import {AiTwotoneHome} from 'react-icons/ai';
+import {MdPendingActions} from 'react-icons/md';
+import {RiAccountPinBoxFill} from 'react-icons/ri';
+import {AiFillLike} from 'react-icons/ai';
+import {BiPowerOff} from 'react-icons/bi';
 import "../App.css";
-
+// import "../Navbar.css";
 
 export default function Navbar({token ,setToken}) {
     return (
@@ -11,23 +15,23 @@ export default function Navbar({token ,setToken}) {
            {token ? (
         <ul>
           <li className='a'>
-          <Link to="/Home">Home <img src="iqon.pjg" alt="" /></Link>
+          <Link to="/Home"><AiTwotoneHome/> <img src="iqon.pjg" alt="" /></Link>
           </li>
           <li className='a'>
-            <Link to="/Job">Job</Link>
+            <Link to="/Job"><MdPendingActions/></Link>
           </li>
           <li className='a'>
-          <Link to="/Account">Account</Link>
+          <Link to="/Account"><RiAccountPinBoxFill/></Link>
           </li>
           <li  className='a'>
-          <Link to="/Like">Like</Link>
+          <Link to="/Like"><AiFillLike/></Link>
           </li>
-          <li  className='a'>
+          {/* <li  className='a'>
          <Link to ="/About">About</Link>
 
-          </li>
+          </li> */}
           <li  className='a'>
-          <Link onClick={()=>{setToken("");}} to ="/logOut">logOut</Link>
+          <Link onClick={()=>{setToken("");}} to ="/logOut"><BiPowerOff/></Link>
           </li>
         </ul>
       ) : (
@@ -39,9 +43,9 @@ export default function Navbar({token ,setToken}) {
           <li className='b'>
           <Link to="/SignUp" >SignUp</Link> 
           </li>
-          <li className='b'>
-          <Link to="/HiBage" >HiBage</Link> 
-          </li>
+          {/* <li className='b'>
+          <Link to="/hiBage" >hiBage</Link> 
+          </li> */}
         </ul>
       )}  
         </div>

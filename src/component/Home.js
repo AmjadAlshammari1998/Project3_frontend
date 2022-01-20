@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import "./Home.css";
 
 
-
-export default function Home({ token }) {
+export default function Home({ token ,userId }) {
     const [post, setPost] = useState([])
     const [favList, setFavList] = useState([])
     const [text, setText] = useState("")
@@ -15,19 +15,21 @@ export default function Home({ token }) {
         const getDate = async () => {
 
             try {
-                const response = await axios.get("http://localhost:5000/posts", {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
                 })
                 setPost(response.data)
-
+                
 
                 if (token) {
-                    const likes = await axios.get("http://localhost:5000/allFavorite", {
+                    const likes = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/allFavorite`, {
                         headers: { authorization: `Bearer ${token}` }
                     })
                     console.log(likes.data, "likes");
                     setFavList(likes.data)
                 }
-
+                // if(userId){
+                    
+                // }
 
 
             } catch (error) {
@@ -50,7 +52,7 @@ export default function Home({ token }) {
 
     const addPost = async () => {
         const result = await axios.post(
-            "http://localhost:5000/addPost",
+            `${process.env.REACT_APP_BACKEND_URL}/addPost`,
             {
                 text: text,
                 img: img,
@@ -66,14 +68,14 @@ export default function Home({ token }) {
 
 
     const deletePost = async (id) => {
-        const response = await axios.delete(`http://localhost:5000/deletePost/${id}`, {
+        const response = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/deletePost/${id}`, {
             headers: { authorization: `Bearer ${token}` }
         })
         setPost(response.data)
     }
 
     const favPost = async (postId) => {
-        const response = await axios.post("http://localhost:5000/favorite", {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/favorite`, {
             postId: postId
         }, {
             headers: { authorization: `Bearer ${token}` }
@@ -90,7 +92,7 @@ export default function Home({ token }) {
     const Update = async (id) => {
         try {
             console.log(id,"id");
-            const updateP = await axios.put(`http://localhost:5000/updatePost/${id}`, {
+            const updateP = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/updatePost/${id}`, {
                 text: update
             }, {
                 headers: { authorization: "Bearer " + token },
@@ -107,43 +109,47 @@ export default function Home({ token }) {
 
 
 
-    return (<div className="home-page">
+    return (<div id="Home">
 
 
         <div className="post-container">
 
             {
-                token ? toggle ? "" : <button className="add-post-btn" onClick={() => { setToggle(!toggle) }}>ADD Post</button> : ""
+                token ? toggle ? "" : <button className="buttonAddbost" onClick={() => { setToggle(!toggle) }}>ADD Post</button> : ""
               
             }
 
             {
                 toggle ? <div className="box-home">
                     {/* <input type="text" placeholder="search here" onChange={addSearch} value={searchInput}/> */}
-                    <input onChange={addText} placeholder="Add text" value={text} />
-                    <input onChange={addimg} placeholder="add img" value={img} />
-                    <button onClick={() => { addPost() }}>Add</button>
+                    <input className='textimg' onChange={addText} placeholder="Add text" value={text} />
+                    <input   className='textimg'onChange={addimg} placeholder="add img" value={img} />
+                    <button className="button" onClick={() => { addPost() }}>Add</button>
                 </div> : ""
             }
-
-
+            
+            <div className='divPost'>
+                <div className='bbb'>
             {
                 post.map((elem, index) => {
-                    console.log(elem);
-                    <img src="b.png" alt="kk" />
-
+                    console.log(elem.userId._id == userId , "condi");
+                    <img  src="b.png" alt="kk" />
+                    
+                    
                     for (let i = 0; i < favList.length; i++) {
                         if (elem._id == favList[i]._id) {
-                            return <div key={index}>
+                            return <div className='div'  key={index}>
                                 <h3 className="account-post">{elem.userId.account}</h3>
                                 <p className="text-post">{elem.text}
-                                    <span className="like-icon" onClick={() => { favPost(elem._id) }}>♥</span>
+                                    <span className="like-icon" onClick={() => { favPost(elem._id) }}>❤️</span>
                                     {
-                                        elem.img ? <img src={elem.img} /> : ""
+                                        elem.img ? <img className='imgPost' src={elem.img} /> : ""
                                     }
-                                    <button onClick={() => { Update(elem._id) }}>Updat</button>
+                                    {elem.userId._id == userId ? <>
+                                   <button onClick={() => { Update(elem._id) }}>Updat</button>
                                     <input onChange={(e) => { changeePosts(e) }} />
-                                    <button className="btn-delete" onClick={() => { deletePost(elem._id) }}>delete</button>
+                                    <button className="btn-delete" onClick={() => { deletePost(elem._id) }}>✖️</button> </> :""}
+                                    
 
                                 </p>
 
@@ -151,23 +157,25 @@ export default function Home({ token }) {
                             </div>
                         }
                     }
-                    return <div key={index}>
+                    return <div className='div' key={index}>
                         <h3 className="account-post">{elem.userId.account}</h3>
                         <p className="text-post">{elem.text}
-                            <span className="like-icon" onClick={() => { favPost(elem._id) }}>♡</span>
+                            <span className="like-icon" onClick={() => { favPost(elem._id) }}>🖤</span>
                             {
-                                elem.img ? <img src={elem.img} /> : ""
+                                elem.img ? <img className='imgPost' src={elem.img} /> : ""
                             }
-                            <button onClick={() => { Update(elem._id) }}>Updat</button>
-                            <input onChange={(e) => { changeePosts(e) }} />
-                            <button className="btn-delete" onClick={() => { deletePost(elem._id) }}>delete</button>
+                             {elem.userId._id == userId ? 
+                             <><button onClick={() => { Update(elem._id) }}>Updat</button>
+                                    <input onChange={(e) => { changeePosts(e) }} />
+                                    <button className="btn-delete" onClick={() => { deletePost(elem._id) }}>✖️</button> </> :""}
                         </p>
-
+                                
                                 
                     </div>
                 })
             }
-
+            </div>
+        </div>
         </div>
     </div>
     )
